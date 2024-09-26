@@ -33,7 +33,7 @@ class Leads extends StatelessWidget {
                 const Text('Leads', style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),),
                 const Spacer(),
                 const badges.Badge(
-                  badgeContent: Text('99'),
+                  badgeContent: Text('99', style: TextStyle(color: Colors.white),),
                   child: Icon(Icons.notifications_outlined, size: 30,),
                 ),
                 const SizedBox(width: 15,),
