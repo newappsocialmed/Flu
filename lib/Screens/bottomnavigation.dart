@@ -9,7 +9,7 @@ class Bottomnavigation extends StatefulWidget {
 }
 
 class _BottomnavigationState extends State<Bottomnavigation> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Text('Home', style: optionStyle),
@@ -28,7 +28,8 @@ class _BottomnavigationState extends State<Bottomnavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
+      backgroundColor: Colors.white,
+      body: SafeArea(child: Center(child: _widgetOptions.elementAt(_selectedIndex))),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -52,10 +53,12 @@ class _BottomnavigationState extends State<Bottomnavigation> {
             label: 'More',
           ),
         ],
+        type: BottomNavigationBarType.fixed,
         selectedFontSize: 12,
         showUnselectedLabels: true,
         unselectedItemColor: Colors.grey,
         currentIndex: _selectedIndex,
+        iconSize: 25,
         selectedItemColor: const Color.fromARGB(255, 236, 90, 5),
         onTap: onChange,
       ),
