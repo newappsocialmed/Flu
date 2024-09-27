@@ -31,6 +31,7 @@ class _BottomnavigationState extends State<Bottomnavigation> {
       backgroundColor: Colors.white,
       body: SafeArea(child: Center(child: _widgetOptions.elementAt(_selectedIndex))),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
