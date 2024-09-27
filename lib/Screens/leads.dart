@@ -26,7 +26,7 @@ class _LeadsState extends State<Leads> with TickerProviderStateMixin{
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.08,
           child: Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 12, right: 12),
             child: Row(
               children: [
                 Container(
