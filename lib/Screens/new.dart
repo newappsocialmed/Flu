@@ -14,18 +14,63 @@ class New extends StatelessWidget {
             child: ListView.builder(
                 itemCount: state.data.length,
                 itemBuilder: (context, ind) {
-                  return Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(DateFormat('MMM').format(DateTime.parse(state.data[ind]['moving_on'])))
-                        ],
-                      ),
-                      const Divider(
-                        height: 1,
-                        color: Colors.grey,
-                      )
-                    ],
+                  return Padding(
+                    padding:
+                        const EdgeInsets.only(left: 16, right: 16, top: 12),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    DateFormat('MMM').format(DateTime.parse(
+                                        state.data[ind]['moving_on'])),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15),
+                                  ),
+                                  Text(
+                                    DateFormat('dd').format(DateTime.parse(
+                                        state.data[ind]['moving_on'])),
+                                    style: const TextStyle(
+                                      fontSize: 23,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  Text(
+                                    DateFormat('HH:mm').format(DateTime.parse(
+                                        state.data[ind]['moving_on'])),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color:
+                                            Color.fromARGB(255, 120, 119, 119)),
+                                  )
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Row(
+                                    children: [Text('Bangalore')],
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        const Divider(
+                          height: 1,
+                          color: Colors.grey,
+                        )
+                      ],
+                    ),
                   );
                 }));
       },
