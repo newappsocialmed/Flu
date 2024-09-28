@@ -1,4 +1,4 @@
-import 'package:flu/Screens/leads.dart';
+import 'package:flu/Screens/Leads/leads.dart';
 import 'package:flutter/material.dart';
 
 class Bottomnavigation extends StatefulWidget {

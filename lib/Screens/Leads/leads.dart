@@ -1,5 +1,5 @@
 import 'package:flu/Bloc/getData/get_data_bloc.dart';
-import 'package:flu/Screens/new.dart';
+import 'package:flu/Screens/Leads/new.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter_bloc/flutter_bloc.dart';
