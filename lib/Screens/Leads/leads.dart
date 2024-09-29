@@ -11,7 +11,7 @@ class Leads extends StatefulWidget {
   State<Leads> createState() => _LeadsState();
 }
 
-class _LeadsState extends State<Leads> with TickerProviderStateMixin{
+class _LeadsState extends State<Leads> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
@@ -37,15 +37,19 @@ class _LeadsState extends State<Leads> with TickerProviderStateMixin{
                         borderRadius: BorderRadius.circular(12)),
                     child: const Padding(
                       padding: EdgeInsets.all(10.0),
-                      child: Image( height: 10, image: AssetImage('assets/images/c.png')),
+                      child: Image(
+                          height: 10, image: AssetImage('assets/images/c.png')),
                     )),
                 const SizedBox(
                   width: 10,
                 ),
-                const Text('Leads', style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500)),
+                const Text('Leads',
+                    style:
+                        TextStyle(fontSize: 25, fontWeight: FontWeight.w500)),
                 const Spacer(),
                 const badges.Badge(
-                  badgeContent: Text('99', style: TextStyle(color: Colors.white)),
+                  badgeContent:
+                      Text('99', style: TextStyle(color: Colors.white)),
                   child: Icon(Icons.notifications_outlined, size: 30),
                 ),
                 const SizedBox(width: 20),
@@ -59,6 +63,7 @@ class _LeadsState extends State<Leads> with TickerProviderStateMixin{
           labelColor: Colors.red,
           unselectedLabelColor: Colors.black,
           indicatorColor: Colors.red,
+          indicatorSize: TabBarIndicatorSize.tab,
           tabs: const [
             Tab(text: 'All'),
             Tab(text: 'New'),
@@ -70,10 +75,16 @@ class _LeadsState extends State<Leads> with TickerProviderStateMixin{
           child: TabBarView(
             controller: tabController,
             children: const [
-              Center(child: Text('All'),),
+              Center(
+                child: Text('All'),
+              ),
               New(),
-              Center(child: Text('Follow'),),
-              Center(child: Text('Booked'),),
+              Center(
+                child: Text('Follow'),
+              ),
+              Center(
+                child: Text('Booked'),
+              ),
             ],
           ),
         )
