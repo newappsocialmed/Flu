@@ -167,6 +167,7 @@ abstract class GetData implements GetDataEvent {
 /// @nodoc
 mixin _$GetDataState {
   List<dynamic> get data => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GetDataStateCopyWith<GetDataState> get copyWith =>
@@ -179,7 +180,7 @@ abstract class $GetDataStateCopyWith<$Res> {
           GetDataState value, $Res Function(GetDataState) then) =
       _$GetDataStateCopyWithImpl<$Res, GetDataState>;
   @useResult
-  $Res call({List<dynamic> data});
+  $Res call({List<dynamic> data, String status});
 }
 
 /// @nodoc
@@ -196,12 +197,17 @@ class _$GetDataStateCopyWithImpl<$Res, $Val extends GetDataState>
   @override
   $Res call({
     Object? data = null,
+    Object? status = null,
   }) {
     return _then(_value.copyWith(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -214,7 +220,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<dynamic> data});
+  $Res call({List<dynamic> data, String status});
 }
 
 /// @nodoc
@@ -229,12 +235,17 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
+    Object? status = null,
   }) {
     return _then(_$InitialImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -242,7 +253,8 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({required final List<dynamic> data}) : _data = data;
+  const _$InitialImpl({required final List<dynamic> data, required this.status})
+      : _data = data;
 
   final List<dynamic> _data;
   @override
@@ -253,8 +265,11 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
+  final String status;
+
+  @override
   String toString() {
-    return 'GetDataState(data: $data)';
+    return 'GetDataState(data: $data, status: $status)';
   }
 
   @override
@@ -262,12 +277,13 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_data), status);
 
   @JsonKey(ignore: true)
   @override
@@ -277,10 +293,14 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements GetDataState {
-  const factory _Initial({required final List<dynamic> data}) = _$InitialImpl;
+  const factory _Initial(
+      {required final List<dynamic> data,
+      required final String status}) = _$InitialImpl;
 
   @override
   List<dynamic> get data;
+  @override
+  String get status;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

@@ -192,10 +192,10 @@ class CustomExpansionTile extends StatefulWidget {
   });
 
   @override
-  _CustomExpansionTileState createState() => _CustomExpansionTileState();
+  CustomExpansionTileState createState() => CustomExpansionTileState();
 }
 
-class _CustomExpansionTileState extends State<CustomExpansionTile> {
+class CustomExpansionTileState extends State<CustomExpansionTile> {
   late bool _isExpanded;
 
   @override
@@ -210,7 +210,7 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
       color: widget.backgroundColor,
       child: Column(
         children: [
-          Container(
+          SizedBox(
             height: 55,
             child: Padding(
               padding: const EdgeInsets.only(left: 20),

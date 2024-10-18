@@ -5,20 +5,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
-class New extends StatelessWidget {
+class New extends StatefulWidget {
   const New({super.key});
 
+  @override
+  State<New> createState() => _NewState();
+}
+
+class _NewState extends State<New> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetDataBloc, GetDataState>(
       builder: (context, state) {
-        return SizedBox.expand(
+        return state.status == 'initial' || state.status == 'loading'?
+        const Center(
+          child: CircularProgressIndicator(),
+        )
+        :state.status == 'completed' ? SizedBox.expand(
             child: ListView.builder(
                 itemCount: state.data.length,
                 itemBuilder: (context, ind) {
                   return Padding(
-                    padding:
-                        const EdgeInsets.only(left: 20, right: 20, top: 12),
+                    padding: const EdgeInsets.only(left: 20, right: 20, top: 12),
                     child: Column(
                       children: [
                         SizedBox(
@@ -247,7 +255,20 @@ class New extends StatelessWidget {
                       ],
                     ),
                   );
-                }));
+                })): Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Data Fetching Failed :(', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                      TextButton(
+                        onPressed: (){
+                          BlocProvider.of<GetDataBloc>(context).add(const GetDataEvent.get());
+                        }, 
+                        child: const Text('Reload', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),)
+                      )
+                    ],
+                  ),
+                );
       },
     );
   }

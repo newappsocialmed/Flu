@@ -9,12 +9,12 @@ class Repo {
       var response = await dio.get(url);
       return [
         {
-          'status':'success',
-          'data':response.data
+          "status":"success",
+          "data":response.data
         }
       ];
     }catch(e){
-      return [{"msg":'Login Failed'}];
+      return [{"status":"failed", "data":"Get Data Failed"}];
     }
   }
 }
