@@ -16,6 +16,7 @@ class GetDataBloc extends Bloc<GetDataEvent, GetDataState> {
     try {
       emit(state.copyWith(status: 'loading', data: []));
       var response = await Repo().getData();
+      await Future.delayed(const Duration(seconds: 3));
       if (response[0]['status'] == "success") {
         emit(state.copyWith(data: response[0]['data']['Customer_Estimate_Flow'], status: 'completed'));
       } else {
