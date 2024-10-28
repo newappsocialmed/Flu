@@ -19,32 +19,38 @@ mixin _$GetDataEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
+    required TResult Function() add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
+    TResult? Function()? add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
+    TResult Function()? add,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetData value) get,
+    required TResult Function(AddData value) add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetData value)? get,
+    TResult? Function(AddData value)? add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetData value)? get,
+    TResult Function(AddData value)? add,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$GetDataImpl implements GetData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
+    required TResult Function() add,
   }) {
     return get();
   }
@@ -115,6 +122,7 @@ class _$GetDataImpl implements GetData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
+    TResult? Function()? add,
   }) {
     return get?.call();
   }
@@ -123,6 +131,7 @@ class _$GetDataImpl implements GetData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
+    TResult Function()? add,
     required TResult orElse(),
   }) {
     if (get != null) {
@@ -135,6 +144,7 @@ class _$GetDataImpl implements GetData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetData value) get,
+    required TResult Function(AddData value) add,
   }) {
     return get(this);
   }
@@ -143,6 +153,7 @@ class _$GetDataImpl implements GetData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetData value)? get,
+    TResult? Function(AddData value)? add,
   }) {
     return get?.call(this);
   }
@@ -151,6 +162,7 @@ class _$GetDataImpl implements GetData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetData value)? get,
+    TResult Function(AddData value)? add,
     required TResult orElse(),
   }) {
     if (get != null) {
@@ -165,9 +177,112 @@ abstract class GetData implements GetDataEvent {
 }
 
 /// @nodoc
+abstract class _$$AddDataImplCopyWith<$Res> {
+  factory _$$AddDataImplCopyWith(
+          _$AddDataImpl value, $Res Function(_$AddDataImpl) then) =
+      __$$AddDataImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AddDataImplCopyWithImpl<$Res>
+    extends _$GetDataEventCopyWithImpl<$Res, _$AddDataImpl>
+    implements _$$AddDataImplCopyWith<$Res> {
+  __$$AddDataImplCopyWithImpl(
+      _$AddDataImpl _value, $Res Function(_$AddDataImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AddDataImpl implements AddData {
+  const _$AddDataImpl();
+
+  @override
+  String toString() {
+    return 'GetDataEvent.add()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AddDataImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() get,
+    required TResult Function() add,
+  }) {
+    return add();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? get,
+    TResult? Function()? add,
+  }) {
+    return add?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? get,
+    TResult Function()? add,
+    required TResult orElse(),
+  }) {
+    if (add != null) {
+      return add();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetData value) get,
+    required TResult Function(AddData value) add,
+  }) {
+    return add(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetData value)? get,
+    TResult? Function(AddData value)? add,
+  }) {
+    return add?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetData value)? get,
+    TResult Function(AddData value)? add,
+    required TResult orElse(),
+  }) {
+    if (add != null) {
+      return add(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddData implements GetDataEvent {
+  const factory AddData() = _$AddDataImpl;
+}
+
+/// @nodoc
 mixin _$GetDataState {
   List<dynamic> get data => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
+  bool get addData => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GetDataStateCopyWith<GetDataState> get copyWith =>
@@ -180,7 +295,7 @@ abstract class $GetDataStateCopyWith<$Res> {
           GetDataState value, $Res Function(GetDataState) then) =
       _$GetDataStateCopyWithImpl<$Res, GetDataState>;
   @useResult
-  $Res call({List<dynamic> data, String status});
+  $Res call({List<dynamic> data, String status, bool addData});
 }
 
 /// @nodoc
@@ -198,6 +313,7 @@ class _$GetDataStateCopyWithImpl<$Res, $Val extends GetDataState>
   $Res call({
     Object? data = null,
     Object? status = null,
+    Object? addData = null,
   }) {
     return _then(_value.copyWith(
       data: null == data
@@ -208,6 +324,10 @@ class _$GetDataStateCopyWithImpl<$Res, $Val extends GetDataState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      addData: null == addData
+          ? _value.addData
+          : addData // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -220,7 +340,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<dynamic> data, String status});
+  $Res call({List<dynamic> data, String status, bool addData});
 }
 
 /// @nodoc
@@ -236,6 +356,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
     Object? status = null,
+    Object? addData = null,
   }) {
     return _then(_$InitialImpl(
       data: null == data
@@ -246,6 +367,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      addData: null == addData
+          ? _value.addData
+          : addData // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -253,7 +378,10 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({required final List<dynamic> data, required this.status})
+  const _$InitialImpl(
+      {required final List<dynamic> data,
+      required this.status,
+      required this.addData})
       : _data = data;
 
   final List<dynamic> _data;
@@ -266,10 +394,12 @@ class _$InitialImpl implements _Initial {
 
   @override
   final String status;
+  @override
+  final bool addData;
 
   @override
   String toString() {
-    return 'GetDataState(data: $data, status: $status)';
+    return 'GetDataState(data: $data, status: $status, addData: $addData)';
   }
 
   @override
@@ -278,12 +408,13 @@ class _$InitialImpl implements _Initial {
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
             const DeepCollectionEquality().equals(other._data, _data) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.addData, addData) || other.addData == addData));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_data), status);
+      runtimeType, const DeepCollectionEquality().hash(_data), status, addData);
 
   @JsonKey(ignore: true)
   @override
@@ -295,12 +426,15 @@ class _$InitialImpl implements _Initial {
 abstract class _Initial implements GetDataState {
   const factory _Initial(
       {required final List<dynamic> data,
-      required final String status}) = _$InitialImpl;
+      required final String status,
+      required final bool addData}) = _$InitialImpl;
 
   @override
   List<dynamic> get data;
   @override
   String get status;
+  @override
+  bool get addData;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
