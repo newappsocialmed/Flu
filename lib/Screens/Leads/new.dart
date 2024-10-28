@@ -14,12 +14,31 @@ class New extends StatefulWidget {
 
 class _NewState extends State<New> {
   @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<GetDataBloc>(context).add(const GetDataEvent.get());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetDataBloc, GetDataState>(
       builder: (context, state) {
         return state.status == 'initial' || state.status == 'loading'?
-        const Center(
-          child: CircularProgressIndicator(),
+        Center(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                height: 100,
+                width: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.grey[200]
+                ),
+              ),
+              const CircularProgressIndicator(color: Colors.red,)
+            ],
+          ),
         )
         :state.status == 'completed' ? SizedBox(
             child: ListView.builder(

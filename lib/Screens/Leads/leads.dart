@@ -1,8 +1,6 @@
-import 'package:flu/Bloc/getData/get_data_bloc.dart';
 import 'package:flu/Screens/Leads/new.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Leads extends StatefulWidget {
   const Leads({super.key});
@@ -12,12 +10,6 @@ class Leads extends StatefulWidget {
 }
 
 class _LeadsState extends State<Leads> with TickerProviderStateMixin {
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<GetDataBloc>(context).add(const GetDataEvent.get());
-  }
-
   @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 4, vsync: this);
