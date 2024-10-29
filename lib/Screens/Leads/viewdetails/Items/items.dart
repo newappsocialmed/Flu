@@ -111,8 +111,7 @@ class Items extends StatelessWidget {
                         backgroundColor: Colors.grey[300],
                         children: <Widget>[
                           for (int i = 0;
-                              i < invent[ind]['category'].length;
-                              i++)
+                              i < invent[ind]['category'].length; i++)
                             Column(
                               children: [
                                 ListTile(
@@ -218,7 +217,7 @@ class CustomExpansionTileState extends State<CustomExpansionTile> {
                 children: [
                   widget.title,
                   const Spacer(),
-                  IconButton(
+                  IconButton(  
                     onPressed: () {
                       setState(() {
                         _isExpanded = !_isExpanded;
@@ -232,25 +231,11 @@ class CustomExpansionTileState extends State<CustomExpansionTile> {
               ),
             ),
           ),
-          // ListTile(
-          //   title: widget.title,
-          //   trailing: IconButton(
-          //     onPressed: () {
-          //       setState(() {
-          //         _isExpanded = !_isExpanded;
-          //       });
-          //     },
-          //     icon: _isExpanded
-          //         ? const Icon(Icons.keyboard_arrow_up)
-          //         : const Icon(Icons.keyboard_arrow_down),
-          //   ),
-          // ),
-          _isExpanded
-              ? Container(
-                  color: Colors.white,
-                  child: Column(children: widget.children),
-                )
-              : Container(),
+          _isExpanded ? Container(
+              color: Colors.white,
+              child: Column(children: widget.children),
+            )
+          : Container(),
         ],
       ),
     );

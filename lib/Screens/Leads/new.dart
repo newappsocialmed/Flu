@@ -15,15 +15,27 @@ class New extends StatefulWidget {
 }
 
 class _NewState extends State<New> {
+  final scrollController = ScrollController();
+  bool _showScrollToTopButton = false;
   @override
   void initState() {
     super.initState();
     BlocProvider.of<GetDataBloc>(context).add(const GetDataEvent.get());
+    scrollController.addListener(() {
+      if (scrollController.offset > 0 && !_showScrollToTopButton) {
+        setState(() {
+          _showScrollToTopButton = true;
+        });
+      } else if (scrollController.offset <= 0 && _showScrollToTopButton) {
+        setState(() {
+          _showScrollToTopButton = false;
+        });
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final scrollController = ScrollController();
     Future<void> getData() async{
       BlocProvider.of<GetDataBloc>(context).add(const GetDataEvent.get());
     }
@@ -297,27 +309,34 @@ class _NewState extends State<New> {
                         );
                       }
                     ),
-                    scrollController.hasClients && scrollController.offset != 0 ?GestureDetector(
-                      onTap: () {
-                        scrollController.animateTo(
-                          scrollController.position.minScrollExtent,
-                          duration: const Duration(milliseconds: 1000),
-                          curve: Curves.easeInOut,
-                        );
-                      },
+                    AnimatedOpacity(
+                      opacity: _showScrollToTopButton ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 300),
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 20, bottom: 20),
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.red,
+                        padding: const EdgeInsets.only(right: 15, bottom: 15),
+                        child: GestureDetector(
+                          onTap: () {
+                            scrollController.animateTo(
+                              scrollController.position.minScrollExtent,
+                              duration: const Duration(milliseconds: 1000),
+                              curve: Curves.easeInOut,
+                            );
+                          },
+                          child: Container(
+                            height: 45,
+                            width: 45,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.red,
+                            ),
+                            child: const Icon(
+                              Icons.arrow_upward,
+                              color: Colors.white,
+                            ),
                           ),
-                          child: const Icon(Icons.arrow_upward, color: Colors.white,),
                         ),
                       ),
-                    ): const SizedBox()
+                    ),
                   ]
                 ),
           ),
